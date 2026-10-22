@@ -1,0 +1,34 @@
+---
+# HITCRT_ENGINEER_FORMAT
+# reference: https://github.com/filipdutescu/modern-cpp-template
+BasedOnStyle: Google                                      
+AccessModifierOffset: -4                               
+AlignAfterOpenBracket: AlwaysBreak
+AllowAllConstructorInitializersOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AlignConsecutiveMacros: true
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+BreakBeforeBraces: Allman
+BinPackArguments: false
+BinPackParameters: false
+Cpp11BracedListStyle: false
+ColumnLimit: 120 
+IndentWidth: 4                             
+IndentPPDirectives: None       
+Language: Cpp
+NamespaceIndentation: Inner
+ReflowComments: false  
+SortIncludes: Never
+SpaceAfterTemplateKeyword: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyBlock: true
+Standard: Latest                         
+TabWidth: 4                                      
+UseTab: Never              
+...

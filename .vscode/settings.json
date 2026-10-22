@@ -1,0 +1,87 @@
+{
+    // files
+    "files.insertFinalNewline": true,
+    "files.associations": {
+        "*.h": "c",
+        "*.hpp": "cpp"
+    },
+    // format
+    "C_Cpp.formatting": "clangFormat",
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.formatOnSave": true,
+    "[c]": {
+        "editor.formatOnSave": false,
+    },
+    // cortex-debug
+    "cortex-debug.variableUseNaturalFormat": true,
+    "cortex-debug.liveWatchRefreshRate": 250,
+    // doxygen config
+    "doxdocgen.c.firstLine": "/**",
+    "doxdocgen.c.lastLine": " **/",
+    "doxdocgen.c.commentPrefix": " * ",
+    "doxdocgen.file.customTag": [
+        "****************************************************************************"
+    ],
+    "doxdocgen.file.fileOrder": [
+        "custom",
+        "file",
+        "brief",
+        "author",
+        "version",
+        "date",
+        "custom",
+        "copyright",
+        "custom",
+    ],
+    "doxdocgen.generic.customTags": [
+        "****************************************************************************"
+    ],
+    "doxdocgen.generic.order": [
+        "custom",
+        "brief",
+        "param",
+        "return",
+        "details",
+        "custom",
+    ],
+    "doxdocgen.c.factoryMethodText": "Create a {name} object",
+    "doxdocgen.file.fileTemplate": "@file{indent:9}{name}",
+    "doxdocgen.file.versionTag": "@version{indent:9}v1.0.0",
+    "doxdocgen.generic.dateFormat": "YYYY-MM-DD",
+    "doxdocgen.generic.dateTemplate": "@date{indent:9}{date}",
+    "doxdocgen.generic.briefTemplate": "@brief{indent:9}{text}",
+    "doxdocgen.generic.useGitUserName": true,
+    "doxdocgen.generic.authorTag": "@author{indent:9}{author}",
+    "doxdocgen.generic.paramTemplate": "@param{indent:9}{param}",
+    "doxdocgen.generic.returnTemplate": "@retval{indent:9}{type} ",
+    "doxdocgen.generic.includeTypeAtReturn": true,
+    "doxdocgen.generic.generateSmartText": false,
+    "doxdocgen.file.copyrightTag": [
+        "@copyright Copyright (c) {2027} HITCRT",
+        "All rights reserved.",
+    ],
+    "comment-divider.mainHeaderFiller": "*",
+    "C_Cpp.doxygen.generatedStyle": "/**",
+    "[cpp]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.stickyScroll.defaultModel": "foldingProviderModel",
+        "editor.suggest.insertMode": "replace"
+    },
+    // cmake
+    "cmake.configureOnOpen": true,
+    "cmake.options.advanced": {
+        "configurePreset": {
+            "statusBarVisibility": "visible",
+        },
+        "build": {
+            "statusBarVisibility": "hidden",
+        },
+        "launch": {
+            "statusBarVisibility": "hidden",
+        },
+        "debug": {
+            "statusBarVisibility": "hidden",
+        },
+    },
+}

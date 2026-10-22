@@ -1,0 +1,74 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // DAPLink
+        {
+            "name": "DAPlink",
+            "cwd": "${workspaceRoot}",
+            "executable": "${command:cmake.getLaunchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device": "STM32H723VG",
+            "svdFile": "User_Debug/STM32H7x3.svd",
+            "servertype": "openocd", 
+            "configFiles": [
+                "User_Debug/openocd.cfg", 
+            ],
+            "runToEntryPoint": "main", 
+            "rtos": "FreeRTOS",
+            "preLaunchTask": "CMake: build",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            }
+        },
+        // JLink
+        {
+            "name": "Jlink",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.getLaunchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device": "STM32H723VG",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "jlink",
+            "interface": "swd",
+            "svdFile": "User_Debug/STM32H7x3.svd",
+            "rtos": "FreeRTOS",
+            "preLaunchTask": "CMake: build",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            }
+            //"preLaunchTask": "log", // 调试时同时开启RTT viewer窗口,若daplink使用jlinkGDBserver启动,需要先开始调试再打开log
+            // 若想要在调试前编译并且打开log,可只使用log的prelaunch task并为log任务添加depends on依赖
+        },
+        {
+            "name": "DAP-attach",
+            "cwd": "${workspaceRoot}",
+            "executable": "${command:cmake.getLaunchTargetPath}",
+            "request": "attach",
+            "type": "cortex-debug",
+            "device": "STM32H723VG",
+            "svdFile": "User_Debug/STM32H7x3.svd",
+            "servertype": "openocd",
+            "configFiles": [
+                "User_Debug/openocd.cfg",
+            ],
+        },
+        {
+            "name": "Jlink-attach",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.getLaunchTargetPath}",
+            "request": "attach",
+            "type": "cortex-debug",
+            "device": "STM32H723VG",
+            "showDevDebugOutput": "none",
+            "servertype": "jlink",
+            "interface": "swd",
+            "svdFile": "User_Debug/STM32H7x3.svd",
+            "rtos": "FreeRTOS",
+        },
+    ],
+}

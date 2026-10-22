@@ -1,0 +1,55 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cmake",
+			"label": "CMake: build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"preset": "${command:cmake.activeBuildPresetName}",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		},
+        {
+            "type": "cmake",
+            "label": "JLink: flash",
+            "command": "build",
+            "targets": [
+                "JLink_FLASH"
+            ],
+            "preset": "${command:cmake.activeBuildPresetName}",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+			"dependsOn": "CMake: build",
+			"detail": "Download code with JLink"
+        },
+		{
+			"type": "shell",
+			"label": "OpenOCD: flash",
+			"command": "openocd",
+			"options": {
+				"cwd": "${command:cmake.getLaunchTargetDirectory}"
+			},
+			"args": [
+				"-f",
+				"../../User_Debug/openocd.cfg",
+				"-c",
+				"program ${command:cmake.getLaunchTargetFilename} verify reset exit"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"dependsOn": "CMake: build",
+			"detail": "Download code with DAPLink"
+		}
+	]
+}
