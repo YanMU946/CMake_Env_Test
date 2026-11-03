@@ -3,13 +3,11 @@
 
 #include "ws2812.hpp"
 #include "buzzer.hpp"
-#include "bsp_fdcan.hpp"
 
 using namespace ihiter;
 
 __attribute__((section(".BDMA_SRAM"))) WS2812 ws2812(&hspi6);
 BUZZER buzzer(&htim12, TIM_CHANNEL_2);
-FDCAN fdcan1(&hfdcan1), fdcan2(&hfdcan2), fdcan3(&hfdcan3);
 
 extern "C" void led_ctrl(void* argument)
 {
@@ -30,10 +28,6 @@ extern "C" void led_ctrl(void* argument)
     buzzer.stop();
 
     ws2812.set(WS::GREEN);
-
-    fdcan1.config();
-    fdcan2.config();
-    fdcan3.config();
     osDelay(1000);
 
     /* Infinite loop */
