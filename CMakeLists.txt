@@ -112,11 +112,13 @@ add_custom_command(
 # J-Link download target
 find_program(JFLASH_EXE NAMES JFlash.exe)
 set(JFLASH_PROJECT "${CMAKE_CURRENT_SOURCE_DIR}/User_Debug/STM32H723VG.jflash")
-set(JFLASH_HEX "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.hex")
+set(JFLASH_ELF "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.elf")
 set(JFLASH_LOG "${CMAKE_CURRENT_BINARY_DIR}/jflash.log")
 
 if(NOT EXISTS "${JFLASH_PROJECT}")
-    message(WARNING "JFlash project file not found: ${JFLASH_PROJECT}. Create it with J-Flash GUI and save it as STM32H723VG.jflash.")
+    message(WARNING "JFlash project file not found: ${JFLASH_PROJECT}. Create it with J-Flash GUI and save it as STM32xxx.jflash.")
+elseif(NOT EXISTS "${JFLASH_ELF}")
+    message(WARNING "JFlash project file not found: ${JFLASH_PROJECT}. Make sure your project generate xxx.elf.")
 endif()
 
 add_custom_target(JLink_FLASH
@@ -126,7 +128,7 @@ add_custom_target(JLink_FLASH
         -File "${CMAKE_CURRENT_SOURCE_DIR}/User_Debug/jlink_details.ps1"
         -JFlashExe "${JFLASH_EXE}"
         -Project "${JFLASH_PROJECT}"
-        -Hex "${JFLASH_HEX}"
+        -Elf "${JFLASH_ELF}"
         -LogFile "${JFLASH_LOG}"
 
     DEPENDS ${CMAKE_PROJECT_NAME}

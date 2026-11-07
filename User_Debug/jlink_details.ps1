@@ -2,7 +2,7 @@
 param(
     [string]$JFlashExe,
     [string]$Project,
-    [string]$Hex,
+    [string]$Elf,
     [string]$LogFile
 )
 
@@ -12,7 +12,7 @@ if (Test-Path -LiteralPath $LogFile) {
 }
 
 # J-Flash options must be joined to their paths: -openprj<file>, -open<file>
-$arguments = "-hide -openprj`"$Project`" -open`"$Hex`" -auto -startapp -exit -jflashlog`"$LogFile`""
+$arguments = "-hide -openprj`"$Project`" -open`"$Elf`" -auto -startapp -exit -jflashlog`"$LogFile`""
 
 # Start J-Flash hidden and keep the process object
 $process = Start-Process -FilePath $JFlashExe -ArgumentList $arguments -PassThru -WindowStyle Hidden
@@ -26,7 +26,7 @@ $tailJob = Start-Job -ScriptBlock {
 # Print new log lines while J-Flash is running
 while (-not $process.HasExited) {
     Receive-Job $tailJob
-    Start-Sleep -Milliseconds 200
+    Start-Sleep -Milliseconds 100
 }
 
 # Read the final log lines and stop the background job
